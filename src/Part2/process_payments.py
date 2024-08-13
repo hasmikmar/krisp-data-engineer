@@ -75,3 +75,5 @@ def process_payments():
     stream_payments_to_storage(storage)
     
     print(checksum)
+
+process_payments()
