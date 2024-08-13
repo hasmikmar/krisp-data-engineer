@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: user_metrics_db1
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: user_metrics_db1
+      DATABASE_USER: myuser
+      DATABASE_PASSWORD: mypassword
+    ports:
+      - "855:8000"  # Expose port 8000 on the host
+    depends_on:
+      - db
+
+volumes:
+  db_data:
