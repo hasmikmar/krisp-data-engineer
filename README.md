@@ -1,4 +1,4 @@
-# Krisp-data-engineer
+# Data-engineer
 # Part One: Data Ingestion Pipeline for User Metrics
 
 ## Project Overview
